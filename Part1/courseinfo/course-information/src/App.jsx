@@ -1,4 +1,4 @@
-const Header = ({ course }) => <h1>{course}</h1>;
+const Header = ({ courseName }) => <h1>{courseName}</h1>;
 
 const Total = ({ total }) => <p>Number of exercises {total}</p>;
 
@@ -16,31 +16,33 @@ const Content = ({ parts }) => {
 };
 
 const App = () => {
-  const course = "Half Stack application development";
-  const parts = [
-    {
-      name: "Fundamentals of React",
-      exercises: 10,
-    },
-    {
-      name: "Using props to pass data",
-      exercises: 7,
-    },
-    {
-      name: "State of a component",
-      exercises: 14,
-    },
-  ];
+  const course = {
+    name: "Half Stack application development",
+    parts: [
+      {
+        name: "Fundamentals of React",
+        exercises: 10,
+      },
+      {
+        name: "Using props to pass data",
+        exercises: 7,
+      },
+      {
+        name: "State of a component",
+        exercises: 14,
+      },
+    ],
+  };
 
-  const totalExercises = parts.reduce(
+  const totalExercises = course.parts.reduce(
     (accumulator, part) => accumulator + part.exercises,
     0,
   );
 
   return (
     <div>
-      <Header course={course} />
-      <Content parts={parts} />
+      <Header courseName={course.name} />
+      <Content parts={course.parts} />
       <Total total={totalExercises} />
     </div>
   );
